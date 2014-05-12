@@ -16,7 +16,11 @@ public class EnvironmentTest {
 	
 	private final String reputationTitle = "UEFA Coefficients 2013";
 	
-	private Environment environment;
+	public static final String BUNDESLIGA = "Bundesliga";
+	public static final String PREMIER_LEAGUE = "Premier League";
+	public static final String LA_LIGA = "La Liga";
+	
+	protected Environment environment;
 
 	private LeagueDAO leagueDAO;
 	
@@ -33,9 +37,9 @@ public class EnvironmentTest {
 		List<League> hardcodedLeagues = new ArrayList<League>();
 		
 		// Initialize teams
-		League bundesliga = new League("Bundesliga");
-		League premierLeague = new League("Premier League");
-		League laLiga = new League("La Liga");
+		League bundesliga = new League(BUNDESLIGA);
+		League premierLeague = new League(PREMIER_LEAGUE);
+		League laLiga = new League(LA_LIGA);
 		
 		// Load teams
 		loadHardcodedTeamsToLeague(bundesliga, 

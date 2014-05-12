@@ -23,6 +23,15 @@ public class League {
 		return this.name;
 	}
 	
+	public Team getTeamByShortName(String shortName) {
+		for (Team team:teams) {
+			if (team.getShortName().equals(shortName)) {
+				return team;
+			}
+		}
+		return null;
+	}
+	
 	@Override
 	public boolean equals(Object leagueObj) {
 		

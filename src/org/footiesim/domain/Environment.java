@@ -33,6 +33,15 @@ public class Environment {
 		this.scoresSample = scoreSamples;
 	}
 	
+	public Team getTeamByLeagueAndShortName(String leagueName, String teamName) {
+		for (League league:this.leagues) {
+			if (league.getName().equals(leagueName)) {
+				return league.getTeamByShortName(teamName);
+			}
+		}
+		return null;
+	}
+	
 	/**
 	 * Rankings generated are a universal one and one per league, as well as per criterion attribute
 	 */
