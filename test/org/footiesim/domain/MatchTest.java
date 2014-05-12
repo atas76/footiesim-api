@@ -5,12 +5,20 @@ import java.util.List;
 
 import org.footiesim.dao.ScoreDAO;
 import org.footiesim.dao.impl.ScoreDAOHardcodedImpl;
+import org.footiesim.domain.exception.InvalidTeamRankingException;
 import org.footiesim.kitchen.Score;
+import org.footiesim.kitchen.ScoresSample;
+import org.junit.Before;
 import org.junit.Test;
 
 public class MatchTest extends EnvironmentTest {
 	
 	private ScoreDAO scoreDAO;
+	
+	@Before
+	public void setUp() {
+		super.setUp();
+	}
 	
 	@Override
 	protected void setUpTechnicalData() {
@@ -185,9 +193,12 @@ public class MatchTest extends EnvironmentTest {
 	 * Match plausibility is checked empirically and its rigorous checking is part of an evaluation API, which is a work in progress and private. 
 	 */
 	@Test
-	public void testMatch() {
+	public void testMatch() throws InvalidTeamRankingException {
 		
-		Match spanishSemi1 = 
+		this.environment = new Environment(leagueDAO.getAllLeagues(), new ScoresSample(this.scoreDAO.getSampleScores()));
+		this.environment.generateDefaultRankings();
+		
+		Match spanishSemi1Leg1 = 
 				new Match(
 					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.LA_LIGA, "Athletic Club"),
 					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.LA_LIGA, "Barcelona"),
@@ -196,7 +207,200 @@ public class MatchTest extends EnvironmentTest {
 					this.environment
 				);
 		
-		Match spanishSemi2;
+		Match spanishSemi1Leg2 = 
+				new Match(
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.LA_LIGA, "Barcelona"),
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.LA_LIGA, "Athletic Club"),
+					Venue.HOME,
+					"Friendly",
+					this.environment
+				);
 		
+		Match spanishSemi2Leg1 =
+				new Match(
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.LA_LIGA, "Atletico Madrid"),
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.LA_LIGA, "Real Madrid"),
+					Venue.HOME,
+					"Friendly",
+					this.environment
+				);
+		
+		Match spanishSemi2Leg2 =
+				new Match(
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.LA_LIGA, "Real Madrid"),
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.LA_LIGA, "Atletico Madrid"),
+					Venue.HOME,
+					"Friendly",
+					this.environment
+				);
+		
+		Match spanishFinal =
+				new Match(
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.LA_LIGA, "Barcelona"),
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.LA_LIGA, "Real Madrid"),
+					Venue.NEUTRAL,
+					"Friendly",
+					this.environment
+				);
+		
+		Match germanSemi1Leg1 = 
+				new Match(
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.BUNDESLIGA, "Leverkusen"),
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.BUNDESLIGA, "Bayern"),
+					Venue.HOME,
+					"Friendly",
+					this.environment
+				);
+		
+		Match germanSemi1Leg2 =
+				new Match(
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.BUNDESLIGA, "Bayern"),
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.BUNDESLIGA, "Leverkusen"),
+					Venue.HOME,
+					"Friendly",
+					this.environment
+				);
+		
+		Match germanSemi2Leg1 =
+				new Match(
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.BUNDESLIGA, "Dortmund"),
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.BUNDESLIGA, "Schalke"),
+					Venue.HOME,
+					"Friendly",
+					this.environment
+				);
+		
+		Match germanSemi2Leg2 =
+				new Match(
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.BUNDESLIGA, "Schalke"),
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.BUNDESLIGA, "Dortmund"),
+					Venue.HOME,
+					"Friendly",
+					this.environment
+				);
+		
+		Match germanFinal =
+				new Match(
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.BUNDESLIGA, "Bayern"),
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.BUNDESLIGA, "Schalke"),
+					Venue.NEUTRAL,
+					"Friendly",
+					this.environment
+				);
+		
+		Match englishSemi1Leg1 =
+				new Match(
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.PREMIER_LEAGUE, "Manchester City"),
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.PREMIER_LEAGUE, "Chelsea"),
+					Venue.HOME,
+					"Friendly",
+					this.environment
+				);
+		
+		Match englishSemi1Leg2 =
+				new Match(
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.PREMIER_LEAGUE, "Chelsea"),
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.PREMIER_LEAGUE, "Manchester City"),
+					Venue.HOME,
+					"Friendly",
+					this.environment
+				);
+		
+		Match englishSemi2Leg1 =
+				new Match(
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.PREMIER_LEAGUE, "Liverpool"),
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.PREMIER_LEAGUE, "Arsenal"),
+					Venue.HOME,
+					"Friendly",
+					this.environment
+				);
+		
+		Match englishSemi2Leg2 =
+				new Match(
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.PREMIER_LEAGUE, "Arsenal"),
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.PREMIER_LEAGUE, "Liverpool"),
+					Venue.HOME,
+					"Friendly",
+					this.environment
+				);
+		
+		Match englishFinal =
+				new Match(
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.PREMIER_LEAGUE, "Chelsea"),
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.PREMIER_LEAGUE, "Arsenal"),
+					Venue.NEUTRAL,
+					"Friendly",
+					this.environment
+				);
+		
+		Match clSemi1Leg1 =
+				new Match(
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.LA_LIGA, "Real Madrid"),
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.LA_LIGA, "Barcelona"),
+					Venue.HOME,
+					"Friendly",
+					this.environment
+				);
+		
+		Match clSemi1Leg2 =
+				new Match(
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.LA_LIGA, "Barcelona"),
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.LA_LIGA, "Real Madrid"),
+					Venue.HOME,
+					"Friendly",
+					this.environment
+				);
+		
+		Match clSemi2Leg1 = 
+				new Match(
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.PREMIER_LEAGUE, "Chelsea"),
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.BUNDESLIGA, "Bayern"),
+					Venue.HOME,
+					"Friendly",
+					this.environment
+				);
+		
+		Match clSemi2Leg2 =
+				new Match(
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.BUNDESLIGA, "Bayern"),
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.PREMIER_LEAGUE, "Chelsea"),
+					Venue.HOME,
+					"Friendly",
+					this.environment
+				);
+		
+		Match clFinal = 
+				new Match(
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.LA_LIGA, "Barcelona"),
+					this.environment.getTeamByLeagueAndShortName(EnvironmentTest.BUNDESLIGA, "Bayern"),
+					Venue.NEUTRAL,
+					"Friendly",
+					this.environment
+				);
+		
+		Match [] spanishMatches = new Match[] {spanishSemi1Leg1, spanishSemi1Leg2, spanishSemi2Leg1, spanishSemi2Leg2, spanishFinal};
+		Match [] germanMatches = new Match [] {germanSemi1Leg1, germanSemi1Leg2, germanSemi2Leg1, germanSemi2Leg2, germanFinal};
+		Match [] englishMatches = new Match [] {englishSemi1Leg1, englishSemi1Leg2, englishSemi2Leg1, englishSemi2Leg2, englishFinal};
+		Match [] clMatches = new Match [] {clSemi1Leg1, clSemi1Leg2, clSemi2Leg1, clSemi2Leg2, clFinal};
+		
+		for (Match match:spanishMatches) {
+			match.calculateResult();
+			System.out.println(match);
+		}
+		
+		for (Match match:germanMatches) {
+			match.calculateResult();
+			System.out.println(match);
+		}
+		
+		for (Match match:englishMatches) {
+			match.calculateResult();
+			System.out.println(match);
+		}
+		
+		for (Match match:clMatches) {
+			match.calculateResult();
+			System.out.println(match);
+		}
 	}
 }

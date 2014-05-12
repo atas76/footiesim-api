@@ -22,7 +22,7 @@ public class EnvironmentTest {
 	
 	protected Environment environment;
 
-	private LeagueDAO leagueDAO;
+	protected LeagueDAO leagueDAO;
 	
 	@Before
 	public void setUp() {
