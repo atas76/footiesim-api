@@ -32,4 +32,8 @@ public class Score {
 	public int getAwayScore() {
 		return this.awayScore;
 	}
+	
+	public double getCapacityRatio() {
+		return (double) this.homeTeamRanking / this.awayTeamRanking;
+	}
 }

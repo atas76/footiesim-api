@@ -19,6 +19,10 @@ public class League {
 		this.teams = teams;
 	}
 	
+	public String getName() {
+		return this.name;
+	}
+	
 	@Override
 	public boolean equals(Object leagueObj) {
 		

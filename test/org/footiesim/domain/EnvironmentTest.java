@@ -26,11 +26,10 @@ public class EnvironmentTest {
 		setUpTechnicalData();
 	}
 	
-	private void setUpTechnicalData() {
-		
-	}
+	protected void setUpTechnicalData() {}
 
-	private void setUpBusinessData() {
+	protected void setUpBusinessData() {
+		
 		List<League> hardcodedLeagues = new ArrayList<League>();
 		
 		// Initialize teams
@@ -41,26 +40,26 @@ public class EnvironmentTest {
 		// Load teams
 		loadHardcodedTeamsToLeague(bundesliga, 
 				new Team[] {
-					new Team("Bayern", new Double(146.922)), 
-					new Team("Dortmund", new Double(61.922)), 
-					new Team("Schalke", new Double(84.922)), 
-					new Team("Leverkusen", new Double(53.922))
+					new Team("Bayern", "Bayern Munich", new Double(146.922)), 
+					new Team("Dortmund", "Borussia Dortmund", new Double(61.922)), 
+					new Team("Schalke", "Schalke 04", new Double(84.922)), 
+					new Team("Leverkusen", "Bayer Leverkusen", new Double(53.922))
 				}, this.reputationTitle);
 		
 		loadHardcodedTeamsToLeague(premierLeague, 
 				new Team[] {
-					new Team("Manchester City", new Double(70.592)), 
-					new Team("Liverpool", new Double(78.592)), 
-					new Team("Chelsea", new Double(137.592)), 
-					new Team("Arsenal", new Double(113.592))
+					new Team("Manchester City", "Manchester City", new Double(70.592)), 
+					new Team("Liverpool", "Liverpool", new Double(78.592)), 
+					new Team("Chelsea", "Chelsea", new Double(137.592)), 
+					new Team("Arsenal", "Arsenal", new Double(113.592))
 				}, this.reputationTitle);
 		
 		loadHardcodedTeamsToLeague(laLiga, 
 				new Team[] {
-					new Team("Atletico Madrid", new Double(99.605)), 
-					new Team("Barcelona", new Double(157.605)), 
-					new Team("Real Madrid", new Double(136.605)), 
-					new Team("Athletic Club", new Double(52.605))
+					new Team("Atletico Madrid", "Atletico Madrid", new Double(99.605)), 
+					new Team("Barcelona", "Barcelona", new Double(157.605)), 
+					new Team("Real Madrid", "Real Madrid", new Double(136.605)), 
+					new Team("Athletic Club", "Athletic Club", new Double(52.605))
 				}, this.reputationTitle);
 		
 		// Accumulate leagues

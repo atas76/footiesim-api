@@ -56,4 +56,29 @@ public class Environment {
 	public TeamRanking getUniversalRanking() {
 		return this.universalRanking;
 	}
+	
+	public List<League> getLeagues() {
+		return this.leagues;
+	}
+	
+	public void setCurrentRanking(League league) {
+		if (league != null && this.leagueRankings.containsKey(league)) {
+			this.currentRanking = this.leagueRankings.get(league);
+		} else {
+			this.currentRanking = this.universalRanking;
+		}
+	}
+	
+	public TeamRanking getCurrentRanking() {
+		
+		if (this.currentRanking == null) {
+			return this.universalRanking;
+		}
+		
+		return this.currentRanking;
+	}
+	
+	public ScoresSample getScoreSample() {
+		return this.scoresSample;
+	}
 }

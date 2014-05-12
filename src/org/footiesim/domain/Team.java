@@ -3,11 +3,14 @@ package org.footiesim.domain;
 public class Team implements Comparable {
 	
 	private String shortName;
+	private String fullName;
+	
 	private String reputationTitle;
 	private Double reputation;
 	
-	public Team(String shortName, Double reputation) {
+	public Team(String shortName, String fullName, Double reputation) {
 		this.shortName = shortName;
+		this.fullName = fullName;
 		this.reputation = reputation;
 	}
 	
@@ -29,5 +32,9 @@ public class Team implements Comparable {
 	
 	public String getShortName() {
 		return this.shortName;
+	}
+	
+	public String getFullName() {
+		return this.fullName;
 	}
 }
